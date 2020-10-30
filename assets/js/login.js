@@ -57,12 +57,9 @@ $(function () {
             url: '/api/login',
             data: $(this).serialize(),
             success: function (res) {
-                if (res.status !== 0) return layer.message;
-                layer.message
-                console.log(res.token);
-                console.log('1');
+                if (res.status !== 0) return layer.msg(res.message+'账号或密码输入有误');
+                layer.msg(res.message)
                 localStorage.setItem('token', res.token)
-                console.log(res.token);
                 // 跳转到后台主页
                 location.href = '/index.html'
             }
